@@ -1,0 +1,39 @@
+﻿@model IEnumerable<web.Models.Phone>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/style3.css">
+</html>
+
+    <h2>Животное эндемики</h2>
+    <div class="phone-list">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Название животного</th>
+                <th>Страна обитания</th>
+                <th>Количество особий</th>
+                <th>Континент</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Model</td>
+                    <td>@Html.ActionLink(item.Brand.Name, "Show_brand", new { item.Brand.Id })</td>
+                    <td>@item.Price</td>
+                    <td>@Html.ActionLink(item.Brand.Country, "Show_brand", new { item.Brand.Id })</td>
+                    
+                    <td>@Html.ActionLink("Редактировать", "EditPhone", item)</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", item)</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+<div class="but_creare">
+    @Html.ActionLink("Добавить новое животное", "Create")
+</div>
